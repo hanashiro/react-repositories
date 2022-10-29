@@ -2,6 +2,7 @@ import React from 'react';
 import MainHeader from '../main-header/_MainHeader';
 import { Box, Typography } from '@mui/material';
 import { MainContent, PageContent } from './_MainStructure.styled';
+import RepositorySearch from '../repository-search/_RepositorySearch';
 // import { MainStructurePartialLogic } from './_MainStructure.logic';
 // import { useMainStructurePartial } from './_MainStructure.hook';
 
@@ -10,7 +11,9 @@ const MainStructure: React.FC = () => {
         <PageContent>
             <MainHeader />
 
-            <MainContent>ABC</MainContent>
+            <MainContent>
+                <RepositorySearch />
+            </MainContent>
 
             <Box sx={{ mt: 'auto', p: 2 }}>
                 <Typography variant="body2" align="center">
