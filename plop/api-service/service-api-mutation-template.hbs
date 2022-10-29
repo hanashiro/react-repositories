@@ -1,0 +1,10 @@
+import { useMutation } from 'react-query';
+import { TMutationOptions } from '@services/api-service/@types/MutationOptions';
+import { {{name}}Api } from '../clients/{{name}}Api';
+
+export const useCreate{{name}}Mutation = (
+    options?: TMutationOptions<
+        Parameters<typeof {{name}}Api.create>[0],
+        Awaited<ReturnType<typeof {{name}}Api.create>>
+    >
+) => useMutation('create{{name}}Mutation', {{name}}Api.create, options);

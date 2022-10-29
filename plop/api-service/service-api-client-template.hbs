@@ -1,0 +1,18 @@
+import { ApiResponse } from '@services/api-service/@types/ApiDTO';
+import { ApiService } from '@services/api-service/ApiService';
+import { {{name}}Model } from '../models/{{name}}Model';
+
+export class {{name}}Api {
+    static list(params: { organization: number }) {
+        return ApiService.get<ApiResponse<{{name}}Model>>({
+            url: '/api/v1/{{folder}}/{{dashCase name}}s/',
+            params,
+        });
+    }
+    static create(data: Omit<{{name}}Model, 'id'>) {
+        return ApiService.post({
+            data,
+            url: '/api/v1/{{folder}}/{{dashCase name}}s/',
+        });
+    }
+}

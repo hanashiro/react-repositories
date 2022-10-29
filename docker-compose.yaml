@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+    dev:
+        image: hanashiro/react-repositories
+        container_name: react-repositories-dev
+        ports:
+            - '3000:3000'
+        build:
+            context: .
+            dockerfile: dockerfile
+        volumes:
+            - .:/usr/src/app
+    storybook:
+        image: hanashiro/react-repositories
+        container_name: react-repositories-storybook
+        ports:
+            - '6006:6006'
+        environment:
+            HOST: localhost
+            PORT: 6006
+        build:
+            context: .
+            dockerfile: dockerfile
+        volumes:
+            - .:/usr/src/app
+        command: storybook

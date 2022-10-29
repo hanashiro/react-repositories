@@ -1,0 +1,11 @@
+import { useApiQuery } from '@services/api-service/useApiQuery';
+import { QueryOptions } from '@services/api-service/@types/QueryOptions';
+import { {{name}}Api } from '../clients/{{name}}Api';
+
+export const use{{name}}sQuery = ({
+    options,
+    params,
+}: {
+    options?: QueryOptions<typeof {{name}}Api.list>;
+    params?: Omit<Parameters<typeof {{name}}Api.list>[0], 'organization'>;
+} = {}) => useApiQuery(['{{camelCase name}}sQuery', params], {{name}}Api.list, options, params);
