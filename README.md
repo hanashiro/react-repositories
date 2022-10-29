@@ -22,6 +22,10 @@ npm install
 yarn install
 ```
 
+While it is installing, you can create a `.env.local` file with a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) in GitHub. This token is used to make requests to the GitHub API.
+
+An example of the `.env.local` file is present on the `.env.local.example` file. You can copy it and rename it to `.env.local`.
+
 Then run the development server:
 
 ```bash
@@ -95,7 +99,6 @@ Ex:
 ```bash
     docker-compose run --rm dev plop
 ```
-
 
 ## Tests
 
