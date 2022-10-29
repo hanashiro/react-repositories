@@ -20,6 +20,7 @@ export const REPOSITORIES_SEARCH = gql`
                 hasPreviousPage
             }
             edges {
+                cursor
                 node {
                     ... on Repository {
                         id

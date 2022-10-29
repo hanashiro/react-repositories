@@ -10,6 +10,7 @@ export interface RepositorySearchResponse {
             hasPreviousPage: boolean;
         };
         edges: {
+            cursor: string;
             node: Repository;
         }[];
     };
