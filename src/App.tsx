@@ -1,14 +1,12 @@
 import React from 'react';
 import Providers from '@partials/app/providers/_Providers';
 
-import { ThemeStore } from '@stores/ThemeStore';
-
+import MainStructure from '@partials/app/main-structure/_MainStructure';
 
 function App() {
-
     return (
         <Providers>
-            Olá
+            <MainStructure />
         </Providers>
     );
 }
