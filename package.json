@@ -8,9 +8,9 @@
         "storybook": "start-storybook -p 6006 -s public",
         "plop": "plop",
         "▚▚▚▚▚         TEST         ▞▞▞▞▞": "",
-        "test": "react-scripts test",
+        "test": "craco test",
         "▙▃▃▃▃       BUILD        ▃▃▃▃▟": "",
-        "build": "react-scripts build",
+        "build": "craco build",
         "build-storybook": "build-storybook -s public"
     },
     "dependencies": {
