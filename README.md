@@ -110,7 +110,7 @@ npm test
 yarn test
 ```
 
-(soon) To see the Test Coverage, run the following command:
+To see the Test Coverage, run the following command:
 
 ```bash
 npm run test:coverage

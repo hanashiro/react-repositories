@@ -9,6 +9,7 @@
         "plop": "plop",
         "▚▚▚▚▚         TEST         ▞▞▞▞▞": "",
         "test": "craco test",
+        "test:coverage": "craco test --coverage",
         "▙▃▃▃▃       BUILD        ▃▃▃▃▟": "",
         "build": "craco build",
         "build-storybook": "build-storybook -s public"
