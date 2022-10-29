@@ -2,6 +2,7 @@
     "compilerOptions": {
         "baseUrl": "./src",
         "paths": {
+            "@graphql-services/*": ["data/graphql/*"],
             "@hooks/*": ["data/hooks/*"],
             "@services/*": ["data/services/*"],
             "@reducers/*": ["data/reducers/*"],
