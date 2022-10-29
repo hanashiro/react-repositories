@@ -1,16 +1,16 @@
 import { gql } from '@apollo/client';
 
-export const REPOSITORIES_SEARCH = gql`
+export const REPOSITORIES_SEARCH = (isBacking = false) => gql`
     query listRepositories(
         $queryString: String!
         $perPage: Int = 25
         $cursor: String
     ) {
         search(
-            first: $perPage
             query: $queryString
             type: REPOSITORY
-            after: $cursor
+            ${!isBacking ? 'after' : 'before'}: $cursor
+            ${!isBacking ? 'first' : 'last'}: $perPage
         ) {
             repositoryCount
             pageInfo {
