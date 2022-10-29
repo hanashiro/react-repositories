@@ -22,7 +22,6 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({ repository }) => {
                 href={repository.url}
                 target="_blank"
                 rel="noreferrer"
-                color={'information.main'}
             >
                 <CardTitleContainer>
                     <Avatar
