@@ -1,65 +1,98 @@
 import React from 'react';
-import { TextField, List, ListItem, Pagination } from '@mui/material';
+import {
+    TextField,
+    List,
+    ListItem,
+    Pagination,
+    CircularProgress,
+    Stack,
+    Button,
+    Typography,
+} from '@mui/material';
 import RepositoryCard from '@components/data-display/RepositoryCard/RepositoryCard';
 import { Content } from './_RepositorySearch.styled';
+
 // import { RepositorySearchPartialLogic } from './_RepositorySearch.logic';
-// import { useRepositorySearchPartial } from './_RepositorySearch.hook';
+import { useRepositorySearchPartial } from './_RepositorySearch.hook';
+import { NumberService } from '@services/Number/NumberService';
 
 const RepositorySearch: React.FC = () => {
+    const {
+        searchQuery,
+        setSearchQuery,
+        data,
+        loading,
+        error,
+        goToNextPage,
+        goToPreviousPage,
+    } = useRepositorySearchPartial();
+
     return (
         <Content>
             <TextField
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 label="Search for repositories"
                 fullWidth
-                sx={{ mb: 3 }}
+                sx={{ my: 3 }}
+                error={!!error}
+                helperText={error?.message}
             />
 
-            <Pagination count={10} color="primary" />
+            {loading && <CircularProgress />}
 
-            <List>
-                <ListItem>
-                    <RepositoryCard
-                        repository={{
-                            id: 'MDEwOlJlcG9zaXRvcnkxMjM0NTY3ODk=',
-                            name: 'react',
-                            url: '',
-                            description:
-                                'A declarative, efficient, and flexible JavaScript library for building user interfaces.',
-                            stargazerCount: 150000,
-                            forkCount: 30000,
-                            owner: {
-                                id: 'MDQ6VXNlcjE=',
-                                login: 'facebook',
-                                avatarUrl:
-                                    'https://avatars.githubusercontent.com/u/69631?v=4',
-                                url: '',
-                            },
-                        }}
-                    />
-                </ListItem>
-                <ListItem>
-                    <RepositoryCard
-                        repository={{
-                            id: 'MDEwOlJlcG9zaXRvcnkxMjM0NTY3ODk=',
-                            name: 'react',
-                            url: '',
-                            description:
-                                'A declarative, efficient, and flexible JavaScript library for building user interfaces.',
-                            stargazerCount: 150000,
-                            forkCount: 30000,
-                            owner: {
-                                id: 'MDQ6VXNlcjE=',
-                                login: 'facebook',
-                                avatarUrl:
-                                    'https://avatars.githubusercontent.com/u/69631?v=4',
-                                url: '',
-                            },
-                        }}
-                    />
-                </ListItem>
-            </List>
+            {!loading && !error && data?.search && (
+                <>
+                    <Typography>
+                        {data?.search.repositoryCount > 0 ? (
+                            <>
+                                Found{' '}
+                                {NumberService.format(
+                                    data?.search.repositoryCount
+                                )}{' '}
+                                repositories
+                            </>
+                        ) : (
+                            <>No repositories found</>
+                        )}
+                    </Typography>
 
-            <Pagination count={10} color="primary" />
+                    {data?.search.repositoryCount > 0 && (
+                        <Stack
+                            direction={'row'}
+                            justifyContent={'space-between'}
+                            sx={{ width: '100%' }}
+                        >
+                            <Button
+                                variant={'contained'}
+                                onClick={goToPreviousPage}
+                                sx={{ minWidth: '90px' }}
+                                disabled={
+                                    !data?.search.pageInfo.hasPreviousPage
+                                }
+                            >
+                                Previous
+                            </Button>
+                            <Button
+                                variant={'contained'}
+                                onClick={goToNextPage}
+                                sx={{ minWidth: '90px' }}
+                                disabled={!data?.search.pageInfo.hasNextPage}
+                            >
+                                Next
+                            </Button>
+                        </Stack>
+                    )}
+
+                    <List>
+                        {data?.search?.edges?.map((edge) => (
+                            <ListItem key={edge?.node?.id}>
+                                <RepositoryCard repository={edge?.node} />
+                            </ListItem>
+                        ))}
+                    </List>
+                </>
+            )}
         </Content>
     );
 };
