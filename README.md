@@ -110,7 +110,7 @@ npm test
 yarn test
 ```
 
-To see the Test Coverage, run the following command:
+(soon) To see the Test Coverage, run the following command:
 
 ```bash
 npm run test:coverage
@@ -118,7 +118,7 @@ npm run test:coverage
 yarn run test:coverage
 ```
 
-For e2e tests, run the following command:
+(soon) For e2e tests, run the following command:
 
 ```bash
 npm run cypress:open
