@@ -1,6 +1,5 @@
 import { createTheme } from '@mui/material';
 import commonTheme from './common-theme';
-import lightTheme from './light-theme';
 
 const theme = createTheme({
     ...commonTheme,
