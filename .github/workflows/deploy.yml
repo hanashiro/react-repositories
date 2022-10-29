@@ -16,8 +16,8 @@ jobs:
                   node-version: '16.x'
             - name: Build web-app
               run: |
-                  npm ci
-                  npm run build
+                  yarn install
+                  yarn run build
               env:
                   REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
                   REACT_APP_GITHUB_TOKEN: ${{ secrets.REACT_APP_GITHUB_TOKEN }}
