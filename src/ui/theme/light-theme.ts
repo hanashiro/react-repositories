@@ -5,7 +5,7 @@ const theme = createTheme({
     ...commonTheme,
     palette: {
         mode: 'light',
-        primary: { main: '#7540ee' },
+        primary: { main: '#295cd9' },
         secondary: { main: '#da2aa9' },
         success: { main: '#62b36d' },
         error: { main: '#f61c0d' },

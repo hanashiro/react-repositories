@@ -1,6 +1,6 @@
-import { styled } from '@mui/material/styles'; 
+import { styled, Toolbar } from '@mui/material';
 
-export const Component = styled('div')`
-    background-color: white; 
-    color: black; 
+export const ToolbarStyled = styled(Toolbar)`
+    display: flex;
+    justify-content: space-between;
 `;
